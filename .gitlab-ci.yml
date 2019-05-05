@@ -5,11 +5,15 @@ stages:
 build_job:
  stage: build
  script:
- - echo 'Building'
+   - echo 'build'
 test_unit_job:
  stage: test
+ image: python:3.6
  script:
- - echo 'Testing 1'
+   - pip install -r ./search_engine_crawler/requirements.txt -r ./search_engine_crawler/requirements-test.txt
+   - python -m unittest discover -s ./search_engine_crawler/tests/
+   - coverage run -m unittest discover -s ./search_engine_crawler/tests/
+   - coverage report --include ./search_engine_crawler/crawler/crawler.py
 test_integration_job:
  stage: test
  script:
