@@ -11,7 +11,8 @@ build:
     -docker build -t name .
   artifacts:
 #    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-    image: name 
+    paths:
+      - docker-name 
 
 test_crawler_job:
  stage: test
