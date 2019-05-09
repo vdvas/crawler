@@ -4,7 +4,7 @@ stages:
  - deploy
 #variables:
 #  crawler_dir=search_engine_crawler
-build:
+build_1:
   stage: build
   image: docker:stable
   services:
@@ -15,9 +15,9 @@ build:
   artifacts:
 #    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     paths:
-      - docker-name 
+      - docker-name_1
 
-build:
+build_2:
   stage: build
   image: docker:stable
   services:
@@ -26,7 +26,16 @@ build:
     - docker build -t name ./search_engine_crawler
   artifacts:
     paths:
-      - docker-name
+      - docker-name-2
+
+build_3:
+  stage: build
+  script:
+    - docker build -t name ./search_engine_crawler
+  artifacts:
+#    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    paths:
+      - docker-name-3
 
 test_crawler_job:
  stage: test
