@@ -6,6 +6,9 @@ stages:
 #  crawler_dir=search_engine_crawler
 build:
   stage: build
+  image: docker:stable
+  services:
+    - docker:dind
   script:
     - cd search_engine_crawler
     - docker build -t name .
