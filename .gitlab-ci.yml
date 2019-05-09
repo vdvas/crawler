@@ -4,6 +4,13 @@ stages:
  - deploy
 #variables:
 #  crawler_dir=search_engine_crawler
+build:
+  script:
+    -docker build ./search_engine_crawler .
+  artifacts:
+    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+
+
 test_crawler_job:
  stage: test
  image: python:3.6
