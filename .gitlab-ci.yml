@@ -31,6 +31,8 @@ build_2:
 build_3:
   stage: build
   image: docker:stable
+  before_script:
+    - docker info
   script:
     - docker build -t name ./search_engine_crawler
   artifacts:
