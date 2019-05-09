@@ -5,11 +5,13 @@ stages:
 #variables:
 #  crawler_dir=search_engine_crawler
 build:
+  stage: build
   script:
-    -docker build ./search_engine_crawler .
+    -cd search_engine_crawler
+    -docker build -t name .
   artifacts:
-    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-
+#    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    image: name 
 
 test_crawler_job:
  stage: test
