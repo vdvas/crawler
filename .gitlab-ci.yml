@@ -12,6 +12,7 @@ build_1:
   script:
     - cd search_engine_crawler
     - docker build -t name .
+    - docker save name > docker-name_1/name
   artifacts:
 #    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     paths:
