@@ -11,9 +11,9 @@ build_1:
     - docker:dind
   script:
     - cd search_engine_crawler
-    - docker login -u root -p qweasd123
-    - docker build -t name .
-    - docker push name
+    - docker login -u vdvas -p qweasd123
+    - docker build -t vdvas/crawler-name .
+    - docker push vdvas/crawler-name
 #  artifacts:
 #    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
 #    paths:
