@@ -11,12 +11,13 @@ build_1:
     - docker:dind
   script:
     - cd search_engine_crawler
+    - docker login -u root -p qweasd123
     - docker build -t name .
-    - docker save name > docker-name_1/name
-  artifacts:
+    - docker push name
+#  artifacts:
 #    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-    paths:
-      - docker-name_1
+#    paths:
+#      - docker-name_1
 
 build_2:
   stage: build
