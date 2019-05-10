@@ -12,7 +12,7 @@ build_crawler:
   script:
     - cd search_engine_crawler
     - docker login -u vdvas -p qweasd123
-    - docker build -t vdvas/crawler-name .
+    - docker build -t vdvas/$CI_COMMIT_SHORT_SHA .
 #    - docker push vdvas/crawler-name
     - docker push vdvas/$CI_COMMIT_SHORT_SHA
 #  artifacts:
