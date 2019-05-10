@@ -47,9 +47,9 @@ build_crawler:
 
 test_docker_image_crawler:
   stage: test
-  image: docker-latest
+  image: docker:latest
   services:
-    - docker-dind
+    - docker:dind
   script:
     - docker login -u vdvas -p qweasd123
     - docker pull vdvas/$CI_COMMIT_SHORT_SHA
