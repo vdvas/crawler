@@ -1,0 +1,77 @@
+stages:
+ - build
+ - test
+ - deploy
+#variables:
+#  crawler_dir=search_engine_crawler
+build_crawler:
+  stage: build
+  image: docker:stable
+  services:
+    - docker:dind
+  script:
+    - cd search_engine_crawler
+    - docker login -u vdvas -p qweasd123
+    - docker build -t vdvas/$CI_COMMIT_SHORT_SHA .
+#    - docker push vdvas/crawler-name
+    - docker push vdvas/$CI_COMMIT_SHORT_SHA
+#  artifacts:
+#    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+#    paths:
+#      - docker-name_1
+
+#build_2:
+#  stage: build
+#  image: docker:stable
+#  services:
+#    - docker:dind
+#  script:
+#    - export DOCKER_HOST="tcp://localhost:2375"
+#    - docker build -t name ./search_engine_crawler
+#  artifacts:
+#    paths:
+#      - docker-name-2
+
+#build_3:
+#  stage: build
+#  image: docker:stable
+#  before_script:
+#    - export DOCKER_HOST="tcp://localhost:2375"
+#    - docker info
+#  script:
+#    - docker build -t name ./search_engine_crawler
+#  artifacts:
+#    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+#    paths:
+#      - docker-name-3
+
+test_docker_image_crawler:
+  stage: test
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u vdvas -p qweasd123
+    - docker pull vdvas/$CI_COMMIT_SHORT_SHA
+    - docker run --rm vdvas/$CI_COMMIT_SHORT_SHA /bin/bash -c "pip install -r requirements.txt -r requirements-test.txt && python -m unittest discover -s tests/ && coverage run -m unittest discover -s tests/ && coverage report --include crawler/crawler.py"
+
+test_crawler_job:
+ stage: test
+ image: python:3.6
+ script:
+   - cd search_engine_crawler
+   - pip install -r requirements.txt -r requirements-test.txt
+   - python -m unittest discover -s tests/
+   - coverage run -m unittest discover -s tests/
+   - coverage report --include crawler/crawler.py
+
+test_ui_job:
+ stage: test
+ image: python:3.6
+ script:
+   - cd search_engine_ui
+   - pip install -r requirements.txt -r requirements-test.txt
+   - python -m unittest discover -s tests/ 
+   - coverage run -m unittest discover -s tests/ 
+   - coverage report --include ui/ui.py
+
