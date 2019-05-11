@@ -6,7 +6,7 @@ services:
       - "mongodb"
       - "rabbitmq"
     tty: true
-#    restart: always
+    restart: always
     networks:
       crawler:
         aliases:
