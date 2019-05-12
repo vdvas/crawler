@@ -11,5 +11,6 @@ ENV FLASK_APP ui.py
 
 RUN apt-get update && apt-get install -y python-pip
 RUN pip install -r requirements.txt
+RUN pip install -r requirements-test.txt
 WORKDIR /$UI_HOME/ui
 ENTRYPOINT ["gunicorn","ui:app","-b","0.0.0.0"]
