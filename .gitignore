@@ -1,4 +1,8 @@
+terraform.tfstate
+terraform.tfstate.backup
 .bash*
-.profile
-.cache/
 .gitconfig
+.cache/
+.profile
+.terraform.d/
+.viminfo
