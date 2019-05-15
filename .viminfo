@@ -21,32 +21,41 @@
 
 # Registers:
 ""1	LINE	0
-	#    - docker-compose exec crawler /bin/bash -c "python3 -m unittest discover -s tests/ && coverage run -m unittest discover -s tests/ && coverage report --include crawler/crawler.py"
+	#    - dev
 "2	LINE	0
-	#    - docker pull vdvas/9a7c218a
+	#  tags: 
 "3	LINE	0
-	#    - docker login -u vdvas -p qweasd123
-"4	LINE	0
-	#    - cd test-environment/crawler
-"5	LINE	0
 	#    - chmod +x /usr/local/bin/docker-compose
+"4	LINE	0
+	#    - docker-compose exec crawler /bin/bash -c "python3 -m unittest discover -s tests/ && coverage run -m unittest discover -s tests/ && coverage report --include crawler/crawler.py"
+"5	LINE	0
+	#    - docker pull vdvas/9a7c218a
 "6	LINE	0
-	   - coverage report --include ui/ui.py
+	#    - docker login -u vdvas -p qweasd123
 "7	LINE	0
-	   - coverage run -m unittest discover -s tests/ 
+	#    - cd test-environment/crawler
 "8	LINE	0
-	   - python -m unittest discover -s tests/ 
+	#    - chmod +x /usr/local/bin/docker-compose
 "9	LINE	0
-	   - pip install -r requirements.txt -r requirements-test.txt
+	#    - docker-compose exec crawler /bin/bash -c "python3 -m unittest discover -s tests/ && coverage run -m unittest discover -s tests/ && coverage report --include crawler/crawler.py"
 
 # File marks:
-'0  38  4  ~/.gitlab-ci.yml
-'1  11  21  /test_crawler/.gitlab-ci.yml
-'2  5  0  /test_crawler/.gitlab-ci.yml
+'0  46  2  ~/.gitlab-ci.yml
+'1  33  4  ~/.gitlab-ci.yml
+'2  11  21  /test_crawler/.gitlab-ci.yml
+'3  5  0  /test_crawler/.gitlab-ci.yml
 
 # Jumplist (newest first):
--'  38  4  ~/.gitlab-ci.yml
+-'  46  2  ~/.gitlab-ci.yml
 -'  1  0  ~/.gitlab-ci.yml
+-'  33  4  ~/.gitlab-ci.yml
+-'  11  21  /test_crawler/.gitlab-ci.yml
+-'  1  0  /test_crawler/.gitlab-ci.yml
+-'  5  0  /test_crawler/.gitlab-ci.yml
+-'  11  21  /test_crawler/.gitlab-ci.yml
+-'  1  0  /test_crawler/.gitlab-ci.yml
+-'  5  0  /test_crawler/.gitlab-ci.yml
+-'  38  4  ~/.gitlab-ci.yml
 -'  11  21  /test_crawler/.gitlab-ci.yml
 -'  1  0  /test_crawler/.gitlab-ci.yml
 -'  5  0  /test_crawler/.gitlab-ci.yml
@@ -57,11 +66,15 @@
 # History of marks within files (newest to oldest):
 
 > ~/.gitlab-ci.yml
-	"	38	4
-	.	38	0
-	+	35	0
-	+	36	0
-	+	38	0
+	"	46	2
+	.	46	0
+	+	30	0
+	+	31	0
+	+	33	0
+	+	15	0
+	+	16	0
+	+	18	0
+	+	46	0
 
 > /test_crawler/.gitlab-ci.yml
 	"	11	21
