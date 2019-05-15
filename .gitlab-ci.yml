@@ -54,3 +54,22 @@ deploy_dev:
   script:
     - docker-compose up -d
 
+deploy_prod:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - apk update && apk upgrade
+    - apk add --no-cache py-pip python
+    - apk add libffi-dev openssl-dev libgcc python-dev build-base
+    - pip install --no-cache-dir docker-compose
+  script:
+    - docker-compose up -d
+  environment:
+    name: production
+    url: https://example.com
+  when: manual
+  only:
+  - master
+
