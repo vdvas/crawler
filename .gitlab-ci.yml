@@ -68,7 +68,7 @@ deploy_prod:
     - docker-compose up -d
   environment:
     name: production
-    url: https://example.com
+    url: http://35.228.77.176/production
   when: manual
   only:
   - master
