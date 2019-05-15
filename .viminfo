@@ -21,33 +21,36 @@
 
 # Registers:
 ""1	LINE	0
-	
+	#    driver: local
 "2	LINE	0
-	  - master
+	#  rabbitmq_data:
 "3	LINE	0
-	  only:
+	#volumes:
 "4	LINE	0
-	  when: manual
+	
 "5	LINE	0
-	    url: http://35.228.77.176/production
+	
 "6	LINE	0
-	    name: production
+	#          - ubuntu
 "7	LINE	0
-	  environment:
+	#        aliases:
 "8	LINE	0
-	    - docker-compose up -d
+	#      crawler:
 "9	LINE	0
-	  script:
+	#    networks:
 
 # File marks:
-'0  49  0  ~/.gitlab-ci.yml
-'1  9  18  /prod/.gitlab-ci.yml
-'2  46  2  ~/.gitlab-ci.yml
-'3  33  4  ~/.gitlab-ci.yml
-'4  11  21  /test_crawler/.gitlab-ci.yml
-'5  5  0  /test_crawler/.gitlab-ci.yml
+'0  48  2  ~/docker-compose.yml
+'1  49  0  ~/.gitlab-ci.yml
+'2  9  18  /prod/.gitlab-ci.yml
+'3  46  2  ~/.gitlab-ci.yml
+'4  33  4  ~/.gitlab-ci.yml
+'5  11  21  /test_crawler/.gitlab-ci.yml
+'6  5  0  /test_crawler/.gitlab-ci.yml
 
 # Jumplist (newest first):
+-'  48  2  ~/docker-compose.yml
+-'  1  0  ~/docker-compose.yml
 -'  49  0  ~/.gitlab-ci.yml
 -'  1  0  ~/.gitlab-ci.yml
 -'  9  18  /prod/.gitlab-ci.yml
@@ -126,8 +129,36 @@
 -'  11  21  /test_crawler/.gitlab-ci.yml
 -'  1  0  /test_crawler/.gitlab-ci.yml
 -'  5  0  /test_crawler/.gitlab-ci.yml
+-'  49  0  ~/.gitlab-ci.yml
+-'  1  0  ~/.gitlab-ci.yml
+-'  9  18  /prod/.gitlab-ci.yml
+-'  1  0  /prod/.gitlab-ci.yml
+-'  46  2  ~/.gitlab-ci.yml
+-'  33  4  ~/.gitlab-ci.yml
+-'  11  21  /test_crawler/.gitlab-ci.yml
+-'  1  0  /test_crawler/.gitlab-ci.yml
+-'  5  0  /test_crawler/.gitlab-ci.yml
+-'  11  21  /test_crawler/.gitlab-ci.yml
+-'  1  0  /test_crawler/.gitlab-ci.yml
+-'  5  0  /test_crawler/.gitlab-ci.yml
+-'  38  4  ~/.gitlab-ci.yml
+-'  11  21  /test_crawler/.gitlab-ci.yml
+-'  1  0  /test_crawler/.gitlab-ci.yml
+-'  5  0  /test_crawler/.gitlab-ci.yml
+-'  11  21  /test_crawler/.gitlab-ci.yml
+-'  1  0  /test_crawler/.gitlab-ci.yml
+-'  5  0  /test_crawler/.gitlab-ci.yml
 
 # History of marks within files (newest to oldest):
+
+> ~/docker-compose.yml
+	"	48	2
+	.	49	0
+	+	33	0
+	+	37	0
+	+	44	0
+	+	47	0
+	+	49	0
 
 > ~/.gitlab-ci.yml
 	"	49	0

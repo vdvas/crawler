@@ -30,31 +30,10 @@ services:
       crawler:
         aliases:
           - mongo
-#  rabbitmq:
-#    image: "rabbitmq:3-management"
-#    ports:
-#      - '4369:4369'
-#      - '5672:5672'
-#      - '25672:25672'
-#      - "15672:15672"
-#    networks:
-#      crawler:
-#        aliases:
-#          - rabbitmq
-#    environment:
-#      - RABBITMQ_DEFAULT_USER=${RABBIT_USER}
-#      - RABBITMQ_DEFAULT_PASS=${RABBIT_PASS}
-#      - RABBITMQ_DEFAULT_USER=rabbitmq
-#      - RABBITMQ_DEFAULT_PASS=rabbitmq  
-#    volumes:
-#      - '/home/devops_cloud19/otus/rabbitmq/conf/orig:/etc/rabbitmq'
 
   rabbitmq:
     build: rabbitmq
     ports:
-#      - '4369:4369'
-#      - '5672:5672'
-#      - '25672:25672'
       - "15672:15672"
     hostname: rabbitmq
     networks:
@@ -62,22 +41,8 @@ services:
         aliases:
           - rabbitmq-test
     environment:
-#      - RABBITMQ_DEFAULT_USER=${RABBIT_USER}
-#      - RABBITMQ_DEFAULT_PASS=${RABBIT_PASS}
       - RABBITMQ_DEFAULT_USER=rabbitmq
       - RABBITMQ_DEFAULT_PASS=rabbitmq
 
-#  ubuntu:
-#    image: "ubuntu:latest"
-#    tty: true
-#    networks:
-#      crawler:
-#        aliases:
-#          - ubuntu
-
-
 networks:
   crawler:
-#volumes:
-#  rabbitmq_data:
-#    driver: local
