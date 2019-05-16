@@ -10,10 +10,6 @@
 В файл docker-compose-gitlab.yml внесем правку в строке external_url, указав правильный url.  
 Выполним установку Gitlab `./crawler/install-gitlab.sh`  
 Зайдем на вэб интерфейс Gitlab, создадим проект под названием crawler, перейдем в настройки Runner и используя url и token, зарегестрируем Runner.  
-Создадим Runner  
-`sudo docker run -d --name gitlab-runner --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/g
-itlab-runner:latest`  
-И зарегестрируем его  
 `sudo docker exec -it gitlab-runner gitlab-runner register --run-untagged --locked=false --url http://some_url --registration-token some_token --docker-privileged --executor docker`  
 
 Запушим наш репозиторий из Github в Gitlab.  
