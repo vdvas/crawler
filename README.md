@@ -11,14 +11,7 @@
 Выполним установку Gitlab `./crawler/install-gitlab.sh`  
 Зайдем на вэб интерфейс Gitlab, создадим проект под названием crawler, перейдем в настройки Runner и используя url и token, зарегестрируем Runner.  
 `sudo docker exec -it gitlab-runner gitlab-runner register --run-untagged --locked=false --url http://some_url --registration-token some_token --docker-privileged --executor docker`  
-
-Запушим наш репозиторий из Github в Gitlab.  
-```
-cd ~/crawler  
-git remote add gitlab http://35.228.195.238/root/crawler.git  
-git push gitlab master  
-```
- 
+   
 # Описание pipeline.
 В пайплайне происходит тестирование контейнеров crawler и ui.  
 На этапе деплоя runner при помощи terraform создает в GCP ВМ и создает инфраструктуру при помощи docker-compose.  
@@ -29,6 +22,11 @@ git push gitlab master
 Переходим в раздел сервисные аккаунты.  
 Создаем ключ для дефолтной учетной записи сервисного аккаунта в формате json.  
 Ключ должен находиться в репозитории, в директории terraform и иметь имя account.json (из репозитория на Github я этот ключ удалил).  
-
-
+  
+Запушим наш репозиторий из Github в Gitlab.  
+```
+cd ~/crawler  
+git remote add gitlab http://35.228.195.238/root/crawler.git  
+git push gitlab master  
+```
 
