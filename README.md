@@ -13,9 +13,7 @@
 Зайдем на вэб интерфейс Gitlab, создадим проект под названием crawler, перейдем в настройки Runner и используя url и token, зарегестрируем Runner.  
 `sudo docker exec -it gitlab-runner gitlab-runner register --run-untagged --locked=false --url http://some_url --registration-token some_token --docker-privileged --executor docker`  
    
-# Описание pipeline.
-В пайплайне происходит тестирование контейнеров crawler и ui.  
-На этапе деплоя runner при помощи terraform создает в GCP ВМ и создает инфраструктуру при помощи docker-compose.  
+# Подготовка GCP.  
 Для управления ресурсами GCP нам необходимо заранее создать файл ключа для сервисного аккаунта через IAM.  
 Для провижининга ВМ средствами terraform необходимо создать ssh ключи для проекта в GCP.  
 # Создание ключа для сервисного аккаунта GCP.  
@@ -31,6 +29,10 @@ ssh-keygen -t rsa -f ~/.ssh/appuser -C appuser
 Ssh ключи должны находиться в репозитории, в директории terraform/ssh  
 `cp -f ~/.ssh/appuser* ~/crawler/terraform/ssh/`  
   
+# Описание pipeline.
+В пайплайне происходит тестирование контейнеров crawler и ui.  
+На этапе деплоя runner при помощи terraform создает в GCP ВМ и создает инфраструктуру при помощи docker-compose.  
+
 # Push to Gitlab repository.   
 Запушим наш репозиторий из Github в Gitlab.  
 ```
