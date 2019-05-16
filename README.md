@@ -28,7 +28,9 @@ ssh-keygen -t rsa -f ~/.ssh/appuser -C appuser
 Вставим содержимое ~/.ssh/appuser.pub в новый ssh ключ.  
 Ssh ключи должны находиться в репозитории, в директории terraform/ssh  
 `cp -f ~/.ssh/appuser* ~/crawler/terraform/ssh/`  
-  
+# Terraform variables.  
+В репозитории в файле terraform/terraform.tfvars поменять параметр project на правильный.  
+
 # Описание pipeline.
 В пайплайне происходит тестирование контейнеров crawler и ui.  
 На этапе деплоя runner при помощи terraform создает в GCP ВМ и создает инфраструктуру при помощи docker-compose.  
