@@ -2,31 +2,9 @@
 За основу взято приложение, предложенное в курсе.  
 Ссылка на гитхаб crawler https://github.com/express42/search_engine_crawler  
 Ссылка на гитхаб ui https://github.com/express42/search_engine_ui  
-# Запуск приложения в docker-compose.  
-Для запуска нужна ВМ в GCP (используем образ ubuntu 16.04LTS).  
-Установим docker и docker-compose при помощи следующих команд.  
-```
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo apt-key fingerprint 0EBFCD88
-sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt-get update
-sudo apt-get install  -y docker-ce docker-ce-cli containerd.io
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-```
-Запустим контейнеры для работы приложений.  
-```
-git clone https://github.com/vdvas/crawler.git
-cd crawler/
-sudo docker-compose up -d
-```
-Проверим что все контейнеры запустились `sudo docker-compose ps`  
-Определим ip адрес ВМ `curl 2ip.ru` и перейдем в браузере http://ip:8000  
-
 
 # CI/CD. Настройка Gitlab CI.  
-Создадим  еще одну ВМ в GCP и установим Gitlab CI.  
+Создадим ВМ в GCP, используя образ ubuntu 16.04 и установим Gitlab CI, при помощи команд ниже.  
 !!! Необходимо дописать запуск раннера. !!!  
 ```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -34,7 +12,8 @@ sudo apt-key fingerprint 0EBFCD88
 sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get update
 sudo apt-get install  -y docker-ce docker-ce-cli containerd.io
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o \
+/usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 git clone https://github.com/vdvas/crawler.git
@@ -83,6 +62,26 @@ test_container_crawler:
     - docker-compose ps
     - docker-compose exec  crawler /bin/bash -c "python3 -m unittest discover -s tests/ && coverage run -m unittest discover -s tests/ && coverage report --include crawler/crawler.py"
 ```  
-
+# Запуск приложения в docker-compose.  
+Для запуска нужна ВМ в GCP (используем образ ubuntu 16.04LTS).  
+Установим docker и docker-compose при помощи следующих команд.  
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install  -y docker-ce docker-ce-cli containerd.io
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+Запустим контейнеры для работы приложений.  
+```
+git clone https://github.com/vdvas/crawler.git
+cd crawler/
+sudo docker-compose up -d
+```
+Проверим что все контейнеры запустились `sudo docker-compose ps`  
+Определим ip адрес ВМ `curl 2ip.ru` и перейдем в браузере http://ip:8000  
 Пример docker exec  
 `sudo docker-compose exec  crawler /bin/bash -c "python3 -m unittest discover -s tests/ && coverage run -m unittest discover -s tests/ && coverage report --include crawler/crawler.py"`
