@@ -18,7 +18,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 git clone https://github.com/vdvas/crawler.git
 sudo  mkdir -p /srv/gitlab/config /srv/gitlab/data /srv/gitlab/logs
-sudo cp ~/crawler-gitlab/docker-compose-gitlab.yml /srv/gitlab/docker-compose.yml
+sudo cp ~/crawler/docker-compose-gitlab.yml /srv/gitlab/docker-compose.yml
 cd /srv/gitlab/
 sudo docker-compose up -d
 ```
