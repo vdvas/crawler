@@ -33,19 +33,6 @@ test_container_ui:
     - docker exec crawler_ui_1 /bin/bash -c "cd /ui && python -m unittest discover -s tests/ && coverage run -m unittest discover -s tests/ && coverage report --include ui/ui.py"
 
 
-deploy_dev:
-  stage: deploy
-  image: docker:latest
-  services:
-    - docker:dind
-  before_script:
-    - apk update && apk upgrade
-    - apk add --no-cache py-pip python
-    - apk add libffi-dev openssl-dev libgcc python-dev build-base
-    - pip install --no-cache-dir docker-compose
-  script:
-    - docker-compose up -d
-
 deploy_prod:
   stage: deploy
   before_script:
