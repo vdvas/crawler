@@ -19,7 +19,7 @@ itlab-runner:latest`
 
 Запушим наш репозиторий из Github в Gitlab.
 cd ~/crawler
-git add remote gitlab http://35.228.195.238/root/proj.git
+git remote add gitlab http://35.228.195.238/root/proj.git
 git push gitlab master
   
 Создадим директорию и склонируем в нее репозиторий с Dockerfile для сборки образов crawler и ui  
