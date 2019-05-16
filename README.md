@@ -4,7 +4,8 @@
 Ссылка на гитхаб ui https://github.com/express42/search_engine_ui  
 
 # CI/CD. Настройка Gitlab CI.  
-Создадим ВМ в GCP, используя образ ubuntu 16.04 и установим Gitlab CI, при помощи выполнения скрипта.  
+Создадим ВМ в GCP, используя образ ubuntu 16.04 и поставим галочки 'Разрешить трафик HTTP' и 'Разрешить трафик HTTPS'.  
+Установим Gitlab CI, при помощи выполнения скрипта.  
 Склонируем репозиторий  
 `git clone https://github.com/vdvas/crawler.git`  
 В файл docker-compose-gitlab.yml внесем правку в строке external_url, указав правильный url.  
