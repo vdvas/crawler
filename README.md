@@ -14,7 +14,7 @@
 `sudo docker run -d --name gitlab-runner --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/g
 itlab-runner:latest`  
 И зарегестрируем его  
-`sudo docker exec -it gitlab-runner gitlab-runner register --run-untagged --locked=false --url http://35.228.195.238 --registration-token nAPEAUPXa1S5MY3PDsVS --docker-privileged --executor docker`  
+`sudo docker exec -it gitlab-runner gitlab-runner register --run-untagged --locked=false --url http://some_url --registration-token some_token --docker-privileged --executor docker`  
 
 Запушим наш репозиторий из Github в Gitlab.  
 ```
