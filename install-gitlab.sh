@@ -12,3 +12,5 @@ sudo  mkdir -p /srv/gitlab/config /srv/gitlab/data /srv/gitlab/logs
 sudo cp ~/crawler/docker-compose-gitlab.yml /srv/gitlab/docker-compose.yml
 cd /srv/gitlab/
 sudo docker-compose up -d
+sudo docker run -d --name gitlab-runner --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
+
