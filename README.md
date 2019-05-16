@@ -5,7 +5,6 @@
 
 # CI/CD. Настройка Gitlab CI.  
 Создадим ВМ в GCP, используя образ ubuntu 16.04 и установим Gitlab CI, при помощи выполнения скрипта.  
-!!! Необходимо дописать запуск раннера. !!!  
 Склонируем репозиторий  
 `git clone https://github.com/vdvas/crawler.git`  
 В файл docker-compose-gitlab.yml внесем правку в строке external_url, указав правильный url.  
@@ -17,10 +16,12 @@ itlab-runner:latest`
 И зарегестрируем его  
 `sudo docker exec -it gitlab-runner gitlab-runner register --run-untagged --locked=false --url http://35.228.195.238 --registration-token nAPEAUPXa1S5MY3PDsVS --docker-privileged --executor docker`  
 
-Запушим наш репозиторий из Github в Gitlab.
-cd ~/crawler
-git remote add gitlab http://35.228.195.238/root/proj.git
-git push gitlab master
+Запушим наш репозиторий из Github в Gitlab.  
+```
+cd ~/crawler  
+git remote add gitlab http://35.228.195.238/root/proj.git  
+git push gitlab master  
+```
   
 Создадим директорию и склонируем в нее репозиторий с Dockerfile для сборки образов crawler и ui  
 ```
